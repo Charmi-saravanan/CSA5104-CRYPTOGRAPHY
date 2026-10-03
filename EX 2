@@ -1,0 +1,19 @@
+import string
+
+plaintext = input("Enter the message: ").upper()
+key = input("Enter 26-letter substitution key: ").upper()
+
+alphabet = string.ascii_uppercase
+
+if len(key) == 26 and len(set(key)) == 26 and key.isalpha():
+    result = ""
+
+    for ch in plaintext:
+        if ch in alphabet:
+            result += key[alphabet.index(ch)]
+        else:
+            result += ch
+
+    print("Encrypted message:", result)
+else:
+    print("Invalid key! Enter 26 unique letters.")
