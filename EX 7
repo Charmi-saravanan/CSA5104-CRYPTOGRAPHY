@@ -1,0 +1,10 @@
+import string
+
+cipher = input("Enter ciphertext: ").upper()
+key = input("Enter guessed plaintext alphabet mapping: ").upper()
+
+if len(key) == 26:
+    table = str.maketrans(string.ascii_uppercase, key)
+    print(cipher.translate(table))
+else:
+    print("Enter exactly 26 letters.")
