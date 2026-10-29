@@ -1,0 +1,18 @@
+grid = [input(f"Row {i+1}: ").upper().replace("J","I")
+        for i in range(5)]
+text = input("Ciphertext: ").upper().replace(" ","")
+pos = {c:(r,k) for r,row in enumerate(grid)
+       for k,c in enumerate(row)}
+out = ""
+
+for i in range(0, len(text)-1, 2):
+    a,b = text[i:i+2]
+    r1,c1 = pos[a]; r2,c2 = pos[b]
+    if r1 == r2:
+        out += grid[r1][(c1-1)%5]+grid[r2][(c2-1)%5]
+    elif c1 == c2:
+        out += grid[(r1-1)%5][c1]+grid[(r2-1)%5][c2]
+    else:
+        out += grid[r1][c2]+grid[r2][c1]
+
+print("Plaintext:", out)
