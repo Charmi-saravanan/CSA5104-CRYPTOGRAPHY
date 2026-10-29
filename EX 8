@@ -1,0 +1,11 @@
+import string
+
+key = input("Keyword: ").upper()
+alphabet = string.ascii_uppercase
+cipher = ''.join(dict.fromkeys(
+    ''.join(c for c in key+alphabet if c in alphabet)))
+text = input("Plaintext: ").upper()
+
+print("Cipher alphabet:", cipher)
+print("Ciphertext:", text.translate(
+    str.maketrans(alphabet, cipher)))
