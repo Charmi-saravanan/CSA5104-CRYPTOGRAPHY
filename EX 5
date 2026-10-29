@@ -1,0 +1,11 @@
+from math import gcd
+
+a, b = map(int, input("Enter a and b: ").split())
+text = input("Plaintext: ").upper()
+
+if gcd(a, 26) != 1:
+    print("Invalid a: decryption impossible")
+else:
+    print("Ciphertext:", ''.join(
+        chr(((a*(ord(c)-65)+b)%26)+65)
+        if c.isalpha() else c for c in text))
