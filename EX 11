@@ -1,0 +1,9 @@
+import math
+
+total = math.factorial(25)
+unique = total // (25 * 4)
+
+print("Total possible keys:", total)
+print("Approximate power of 2:", math.log2(total))
+print("Effectively unique keys:", unique)
+print("Unique keys power of 2:", math.log2(unique))
