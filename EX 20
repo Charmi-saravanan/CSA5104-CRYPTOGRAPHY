@@ -1,0 +1,33 @@
+key = "0123456789abcdef"
+iv = "abcdef0123456789"
+text = "HELLO BLOCK ONE AND BLOCK TWO!!"
+
+# ECB Simulation
+ecb_cipher = ''.join(chr(ord(c) ^ ord(key[i % len(key)])) for i, c in enumerate(text))
+
+damaged_ecb = bytearray(ecb_cipher.encode())
+damaged_ecb[0] ^= 1
+
+ecb_decrypt = ''.join(
+    chr(b ^ ord(key[i % len(key)]))
+    for i, b in enumerate(damaged_ecb)
+)
+
+print("Mode: ECB")
+print("Original :", ecb_cipher.encode().hex())
+print("Modified :", ecb_decrypt)
+
+print()
+
+# CBC Simulation
+cbc_cipher = []
+prev = iv
+
+for i, ch in enumerate(text):
+    x = ord(ch) ^ ord(prev[i % len(prev)])
+    c = x ^ ord(key[i % len(key)])
+    cbc_cipher.append(c)
+
+cbc_bytes = bytearray(cbc_cipher)
+
+damaged_cbc = byte
