@@ -1,0 +1,25 @@
+import os
+import time
+
+# Generate a 24-byte key (like Triple DES)
+key = os.urandom(24)
+
+# Generate an 8-byte IV
+iv = os.urandom(8)
+
+text = "HELLO CRYPTOGRAPHY"
+
+start = time.time()
+
+# Simple XOR-based encryption demo
+encrypted = ''.join(
+    chr(ord(text[i]) ^ key[i % len(key)])
+    for i in range(len(text))
+)
+
+end = time.time()
+
+print("Key:", key.hex())
+print("IV:", iv.hex())
+print("Ciphertext:", encrypted.encode().hex())
+print("Time:", end - start)
