@@ -1,0 +1,10 @@
+from Crypto.Cipher import DES
+
+key = b'12345678'
+cipher = DES.new(key, DES.MODE_ECB)
+
+encrypted = cipher.encrypt(b'HELLO123')
+decrypted = cipher.decrypt(encrypted)
+
+print("Ciphertext:", encrypted.hex())
+print("Decrypted:", decrypted.decode())
