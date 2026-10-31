@@ -1,0 +1,16 @@
+import numpy as np
+
+K = np.array([[9, 4], [5, 7]])
+text = input("Enter plaintext: ").upper().replace(" ", "")
+text += 'X' if len(text) % 2 else ''
+
+nums = [ord(c)-65 for c in text]
+cipher = []
+
+for i in range(0, len(nums), 2):
+    cipher.extend(K.dot(nums[i:i+2]) % 26)
+
+print("Ciphertext:", ''.join(chr(x+65) for x in cipher))
+
+inv = np.linalg.inv(K) * 26
+print("Use modular inverse for decryption.")
