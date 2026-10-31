@@ -1,0 +1,11 @@
+# DES Key Information
+
+key_hex = "133457799BBCDFF1"
+
+# Convert hexadecimal key to bytes
+key = bytes.fromhex(key_hex)
+
+print("DES key:", key.hex())
+print("DES block size:", 8)     # DES uses 64-bit (8-byte) blocks
+print("Number of rounds:", 16)
+print("Key schedule: PC-1, shifts and PC-2")
