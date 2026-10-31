@@ -1,0 +1,11 @@
+from collections import Counter
+
+text = input("Enter ciphertext: ").upper()
+english = "ETAOINSHRDLCUMWFGYPBVKJXQZ"
+freq = Counter(c for c in text if c.isalpha())
+ordered = ''.join(x for x,_ in freq.most_common())
+
+mapping = dict(zip(ordered, english))
+result = ''.join(mapping.get(c,c) for c in text)
+
+print("Possible plaintext:", result)
